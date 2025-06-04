@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI小秘书 - 事件列表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            border: 3px solid #1f2937;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .capsule-button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 65px;
+            height: 30px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .event-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .filter-tab.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="phone-frame mx-auto mt-8 relative">
+        <!-- 胶囊按钮 -->
+        <div class="capsule-button"></div>
+        
+        <!-- 主要内容区域 -->
+        <div class="h-full gradient-bg p-6 pt-16">
+            <!-- 顶部导航 -->
+            <div class="flex items-center justify-between mb-6">
+                <button class="w-10 h-10 rounded-full glass-effect flex items-center justify-center">
+                    <i class="fas fa-arrow-left text-white"></i>
+                </button>
+                <h1 class="text-white text-xl font-semibold">全部事件</h1>
+                <button class="w-10 h-10 rounded-full glass-effect flex items-center justify-center">
+                    <i class="fas fa-search text-white"></i>
+                </button>
+            </div>
+
+            <!-- 统计概览 -->
+            <div class="bg-white/95 rounded-2xl p-4 mb-6">
+                <div class="grid grid-cols-4 gap-4 text-center">
+                    <div>
+                        <p class="text-gray-800 font-bold text-lg">28</p>
+                        <p class="text-gray-600 text-xs">总事件</p>
+                    </div>
+                    <div>
+                        <p class="text-blue-600 font-bold text-lg">8</p>
+                        <p class="text-gray-600 text-xs">进行中</p>
+                    </div>
+                    <div>
+                        <p class="text-yellow-600 font-bold text-lg">5</p>
+                        <p class="text-gray-600 text-xs">待开始</p>
+                    </div>
+                    <div>
+                        <p class="text-green-600 font-bold text-lg">15</p>
+                        <p class="text-gray-600 text-xs">已完成</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 筛选标签 -->
+            <div class="flex space-x-2 mb-6 overflow-x-auto">
+                <button class="filter-tab active px-4 py-2 rounded-full text-white text-sm font-medium whitespace-nowrap glass-effect">
+                    全部
+                </button>
+                <button class="filter-tab px-4 py-2 rounded-full text-white text-sm font-medium whitespace-nowrap glass-effect">
+                    今天
+                </button>
+                <button class="filter-tab px-4 py-2 rounded-full text-white text-sm font-medium whitespace-nowrap glass-effect">
+                    明天
+                </button>
+                <button class="filter-tab px-4 py-2 rounded-full text-white text-sm font-medium whitespace-nowrap glass-effect">
+                    本周
+                </button>
+                <button class="filter-tab px-4 py-2 rounded-full text-white text-sm font-medium whitespace-nowrap glass-effect">
+                    重要
+                </button>
+            </div>
+
+            <!-- 事件列表 -->
+            <div class="h-96 overflow-y-auto space-y-3">
+                <!-- 今天的事件 -->
+                <div class="text-white text-sm font-medium mb-2 px-2">
+                    <i class="fas fa-calendar-day mr-2"></i>
+                    今天 - 1月15日
+                </div>
+
+                <div class="event-card rounded-2xl p-4 border-l-4 border-green-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-gray-800 font-medium">团队会议</h4>
+                        <span class="text-xs text-gray-500">09:00-10:30</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">讨论Q1项目规划和资源分配</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">进行中</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-users text-gray-400 text-xs"></i>
+                            <span class="text-gray-500 text-xs">5人</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card rounded-2xl p-4 border-l-4 border-yellow-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-gray-800 font-medium">客户拜访</h4>
+                        <span class="text-xs text-gray-500">14:00-16:30</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">与ABC公司讨论合作方案</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">
+                            <i class="fas fa-star mr-1"></i>重要
+                        </span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-gray-400 text-xs"></i>
+                            <span class="text-gray-500 text-xs">会议室A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card rounded-2xl p-4 border-l-4 border-blue-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-gray-800 font-medium">健身房锻炼</h4>
+                        <span class="text-xs text-gray-500">19:00-20:30</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">胸部和三头肌训练</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">待开始</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-dumbbell text-gray-400 text-xs"></i>
+                            <span class="text-gray-500 text-xs">90分钟</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 明天的事件 -->
+                <div class="text-white text-sm font-medium mb-2 px-2 mt-6">
+                    <i class="fas fa-calendar-plus mr-2"></i>
+                    明天 - 1月16日
+                </div>
+
+                <div class="event-card rounded-2xl p-4 border-l-4 border-purple-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-gray-800 font-medium">产品评审</h4>
+                        <span class="text-xs text-gray-500">10:00-12:00</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">新功能上线前的最终评审</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">待开始</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-users text-gray-400 text-xs"></i>
+                            <span class="text-gray-500 text-xs">8人</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card rounded-2xl p-4 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-gray-800 font-medium">项目汇报</h4>
+                        <span class="text-xs text-gray-500">15:30-17:00</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">向CEO汇报Q4项目进展</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">
+                            <i class="fas fa-exclamation mr-1"></i>紧急
+                        </span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-presentation text-gray-400 text-xs"></i>
+                            <span class="text-gray-500 text-xs">PPT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 已完成的事件 -->
+                <div class="text-white text-sm font-medium mb-2 px-2 mt-6">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    已完成
+                </div>
+
+                <div class="event-card rounded-2xl p-4 border-l-4 border-gray-300 opacity-75">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-gray-500 font-medium line-through">阅读技术文档</h4>
+                        <span class="text-xs text-gray-400">昨天 20:00</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3">学习新的前端框架</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full">
+                            <i class="fas fa-check mr-1"></i>已完成
+                        </span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-book text-gray-400 text-xs"></i>
+                            <span class="text-gray-400 text-xs">2小时</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card rounded-2xl p-4 border-l-4 border-gray-300 opacity-75">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-gray-500 font-medium line-through">代码Review</h4>
+                        <span class="text-xs text-gray-400">昨天 16:00</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3">审查团队提交的代码</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full">
+                            <i class="fas fa-check mr-1"></i>已完成
+                        </span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-code text-gray-400 text-xs"></i>
+                            <span class="text-gray-400 text-xs">45分钟</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部操作 -->
+            <div class="mt-4 flex justify-center">
+                <button class="bg-gradient-to-r from-blue-500 to-purple-600 w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-plus text-white text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 筛选标签交互
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.className = 'filter-tab px-4 py-2 rounded-full text-white text-sm font-medium whitespace-nowrap glass-effect';
+                });
+                tab.classList.add('active');
+                tab.className = 'filter-tab active px-4 py-2 rounded-full text-white text-sm font-medium whitespace-nowrap glass-effect';
+            });
+        });
+    </script>
+</body>
+</html> 
